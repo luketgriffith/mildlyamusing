@@ -1,0 +1,21 @@
+<div class="head">
+  <h2>Mildly Amusing</h2>
+  <h4>A place to share those thoughts that made you smirk, but not enough to say out loud. Please be nice.</h4>
+  <hr>
+</div>
+
+<form class="thoughts" ng-submit="vm.add(thought)">
+  <textarea ng-model="thought.thought" placeholder="Mildly Amusing Thought"></textarea>  
+  <input type="text" ng-model="thought.name" placeholder="Sign it">
+  <button class="button">Add</button>
+</form>
+<ul class="addedThoughts">
+<hr>
+  <li ng-repeat="thought in vm.thoughts"><p>{{thought.thought}}</p>
+  <span>-{{thought.name}}</span>
+  <br>
+  <i class="fa fa-heart" id={{thought.objectId}} ng-click="vm.like(thought)"></i> <span>{{thought.likes}}</span>
+  
+  <hr>
+  </li>
+</ul>
