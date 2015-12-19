@@ -8475,7 +8475,12 @@ body {
   margin: 0 auto;
   text-align: center; }
 
+.buttons {
+  margin: 20px auto;
+  text-align: center; }
+
 .thoughts {
+  display: none;
   background-color: #EEE;
   width: 50%;
   padding: 30px;
@@ -8494,6 +8499,13 @@ body {
     margin: 10px auto; }
   .thoughts li {
     margin: 15px; }
+
+.displayed {
+  display: block; }
+
+.headline {
+  margin: 0 auto;
+  text-align: center; }
 
 .addedThoughts {
   display: block;

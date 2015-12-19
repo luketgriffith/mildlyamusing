@@ -1,3 +1,4 @@
+import $ from 'jquery';
 let HomeController = function($http, $scope){
   let vm= this;
   
@@ -14,9 +15,17 @@ let HomeController = function($http, $scope){
   function getThoughts(){
     $http.get(Parse.url, Parse.CONFIG).then((res)=>{
       console.log(res);
-      vm.thoughts= res.data.results;
+      vm.thoughts= res.data.results.reverse();
     });
   }
+
+
+  $('.addThought').click(function(){
+    $('.thoughts').addClass('displayed');
+  });
+
+
+
 
   getThoughts();
   $scope.$on('newThought', function(){
@@ -37,6 +46,7 @@ let HomeController = function($http, $scope){
     $http.post(Parse.url, t, Parse.CONFIG).then((res)=>{
       console.log(res);
       $scope.$broadcast('newThought');
+      $('.thoughts').removeClass('displayed');
     });
   };
   vm.like= function(thought){
@@ -51,6 +61,12 @@ let HomeController = function($http, $scope){
       // console.log(res);
       $scope.$broadcast('liked');
     })
+  }
+  vm.sortAmuse = function(){
+      vm.orderList= 'likes';
+  }
+  vm.sortOld = function(){
+    vm.orderList = 'createdAt'
   }
 };
 HomeController.$inject= ['$http', '$scope'];
